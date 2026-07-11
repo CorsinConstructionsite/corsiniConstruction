@@ -3,10 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b0e">
+  <meta
+    name="description"
+    content="Corsini Construction: ristrutturazioni, imbiancature, impianti idraulici, pavimenti e interventi edili."
+  >
 
-  <title>Corsini Edilizia</title>
+  <title>Corsini Construction | Ristrutturazioni e lavori edili</title>
+
+  <link rel="preconnect" href="https://images.pexels.com">
 
   <style>
+    :root {
+      --bg: #090b0e;
+      --bg-soft: #0f1318;
+      --panel: #151a20;
+      --panel-light: #f3f4f5;
+      --text: #f7f7f7;
+      --text-dark: #171a1e;
+      --muted: #a5abb3;
+      --muted-dark: #626973;
+      --accent: #f28a22;
+      --accent-light: #ffad55;
+      --line: rgba(255, 255, 255, 0.11);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --radius: 24px;
+      --max-width: 1180px;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -17,9 +41,27 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f3ef;
-      color: #202520;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     button,
@@ -28,302 +70,920 @@
       font: inherit;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      border: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.08;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
       align-items: center;
-      gap: 20px;
-      padding: 18px 7%;
-      background: #17231e;
-      color: white;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    header button {
-      padding: 11px 18px;
-      border: none;
-      border-radius: 10px;
-      background: #d98332;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .hero {
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      padding: 70px 7%;
-      background:
-        linear-gradient(rgba(23, 35, 30, 0.88), rgba(23, 35, 30, 0.88)),
-        linear-gradient(135deg, #263b31, #111a16);
-      color: white;
-    }
-
-    .hero-content {
-      max-width: 760px;
-    }
-
-    .hero small {
-      color: #e7a764;
-      font-weight: bold;
+      gap: 9px;
+      margin-bottom: 14px;
+      color: var(--accent-light);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: 2px;
     }
 
-    .hero h1 {
-      margin: 15px 0 20px;
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 1;
+    .eyebrow::before {
+      width: 28px;
+      height: 2px;
+      background: var(--accent);
+      content: "";
     }
 
-    .hero p {
-      max-width: 650px;
-      color: #d8dedb;
-      font-size: 19px;
-      line-height: 1.7;
-    }
-
-    .hero-button {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 15px 24px;
-      border: none;
-      border-radius: 12px;
-      background: #d98332;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .services {
-      max-width: 1200px;
-      margin: auto;
-      padding: 80px 20px;
-    }
-
-    .section-title {
-      max-width: 700px;
-      margin-bottom: 40px;
-    }
-
-    .section-title small {
-      color: #b86320;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .section-title h2 {
-      margin: 10px 0;
-      font-size: clamp(34px, 5vw, 52px);
-    }
-
-    .section-title p {
-      color: #667068;
-      line-height: 1.6;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      min-height: 270px;
-      padding: 28px;
-      border: 1px solid #dedbd5;
-      border-radius: 20px;
-      background: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #d98332;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-icon {
-      width: 58px;
-      height: 58px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 35px;
-      border-radius: 16px;
-      background: #f6e4d3;
-      font-size: 28px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 23px;
-    }
-
-    .card p {
-      color: #667068;
-      line-height: 1.6;
-    }
-
-    .card strong {
-      display: block;
-      margin-top: 18px;
-      color: #b86320;
-    }
-
-    footer {
-      padding: 35px 20px;
-      background: #17231e;
-      color: #d6dcd8;
+    /* Barra superiore */
+    .topbar {
+      position: relative;
+      z-index: 30;
+      padding: 8px 20px;
+      background: var(--accent);
+      color: #111;
+      font-size: 0.82rem;
+      font-weight: 850;
       text-align: center;
     }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      inset: 0;
-      justify-content: center;
+    .topbar a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Intestazione */
+    .site-header {
+      position: sticky;
+      z-index: 25;
+      top: 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 11, 14, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .header-inner {
+      display: flex;
+      min-height: 82px;
       align-items: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.72);
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand-logo {
+      width: 224px;
+      height: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav > a:not(.call-button) {
+      color: #d6dae0;
+      font-size: 0.9rem;
+      font-weight: 750;
+    }
+
+    .nav > a:not(.call-button):hover {
+      color: #fff;
+    }
+
+    .call-button,
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border-radius: 13px;
+      cursor: pointer;
+      font-weight: 900;
+      transition:
+        transform 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .call-button {
+      background: var(--accent);
+      box-shadow: 0 12px 26px rgba(242, 138, 34, 0.25);
+      color: #111;
+    }
+
+    .call-button:hover,
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .call-button:hover {
+      background: var(--accent-light);
+    }
+
+    .phone-icon {
+      width: 19px;
+      height: 19px;
+      fill: currentColor;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(9, 11, 14, 0.97) 0%, rgba(9, 11, 14, 0.86) 47%, rgba(9, 11, 14, 0.25) 100%),
+        url("https://images.pexels.com/photos/15798781/pexels-photo-15798781.jpeg?auto=compress&cs=tinysrgb&w=1800")
+        center / cover no-repeat;
+    }
+
+    .hero::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 180px;
+      background: linear-gradient(transparent, var(--bg));
+      content: "";
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      min-height: 720px;
+      grid-template-columns: minmax(0, 760px) 1fr;
+      align-items: center;
+      padding-block: 90px;
+    }
+
+    .hero-copy {
+      padding-block: 30px;
+    }
+
+    .hero h1 {
+      max-width: 820px;
+      margin-bottom: 24px;
+      font-size: clamp(3.1rem, 7vw, 6.6rem);
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero-description {
+      max-width: 690px;
+      margin-bottom: 32px;
+      color: #c0c5cb;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      box-shadow: 0 14px 32px rgba(242, 138, 34, 0.25);
+      color: #111;
+    }
+
+    .button.primary:hover {
+      background: var(--accent-light);
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .hero-point {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(12, 15, 19, 0.66);
+      color: #d6d9dd;
+      font-size: 0.82rem;
+      font-weight: 750;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-point::before {
+      margin-right: 7px;
+      color: var(--accent);
+      content: "✓";
+      font-weight: 950;
+    }
+
+    /* Fascia caratteristiche */
+    .benefits {
+      position: relative;
+      z-index: 3;
+      margin-top: -54px;
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(21, 26, 32, 0.96);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .benefit {
+      padding: 28px;
+      border-right: 1px solid var(--line);
+    }
+
+    .benefit:last-child {
+      border-right: 0;
+    }
+
+    .benefit strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+      font-size: 1.04rem;
+    }
+
+    .benefit span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* Sezioni */
+    .section {
+      padding-block: 110px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 44px;
+    }
+
+    .section-heading > div {
+      max-width: 760px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 14px;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      letter-spacing: -0.055em;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    /* Card servizi */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      cursor: pointer;
+      isolation: isolate;
+      transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+    }
+
+    .service-card:hover,
+    .service-card:focus-visible {
+      transform: translateY(-7px);
+      border-color: rgba(242, 138, 34, 0.72);
+      box-shadow: var(--shadow);
+      outline: none;
+    }
+
+    .service-card img {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .service-card::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(9, 11, 14, 0.08) 10%, rgba(9, 11, 14, 0.96) 84%);
+      content: "";
+    }
+
+    .service-content {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 27px;
+    }
+
+    .service-number {
+      display: inline-flex;
+      margin-bottom: 14px;
+      color: var(--accent-light);
+      font-size: 0.74rem;
+      font-weight: 950;
+      letter-spacing: 0.14em;
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.55rem;
+    }
+
+    .service-card p {
+      margin-bottom: 16px;
+      color: #c2c7cc;
+      font-size: 0.91rem;
+    }
+
+    .service-link {
+      color: var(--accent-light);
+      font-size: 0.9rem;
+      font-weight: 900;
+    }
+
+    /* Intervento rapido */
+    .urgent-section {
+      padding-block: 20px 110px;
+    }
+
+    .urgent-box {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 42px;
+      align-items: center;
+      padding: 58px;
+      overflow: hidden;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.24), transparent 36%),
+        var(--accent);
+      color: #111;
+    }
+
+    .urgent-box::after {
+      position: absolute;
+      right: -80px;
+      bottom: -120px;
+      width: 340px;
+      height: 340px;
+      border: 50px solid rgba(0, 0, 0, 0.09);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .urgent-box .eyebrow {
+      color: #111;
+    }
+
+    .urgent-box .eyebrow::before {
+      background: #111;
+    }
+
+    .urgent-box h2 {
+      max-width: 780px;
+      margin-bottom: 14px;
+      font-size: clamp(2.5rem, 5vw, 4.7rem);
+      letter-spacing: -0.055em;
+    }
+
+    .urgent-box p {
+      max-width: 700px;
+      margin-bottom: 0;
+      color: rgba(0, 0, 0, 0.72);
+    }
+
+    .urgent-actions {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 10px;
+    }
+
+    .urgent-call {
+      display: inline-flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 15px;
+      background: #0c0f12;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+      color: #fff;
+      font-weight: 950;
+    }
+
+    .urgent-actions small {
+      color: rgba(0, 0, 0, 0.68);
+      font-weight: 750;
+      text-align: center;
+    }
+
+    /* Metodo */
+    .process-section {
+      background: var(--panel-light);
+      color: var(--text-dark);
+    }
+
+    .process-section .eyebrow {
+      color: #b45c0f;
+    }
+
+    .process-section .section-heading p {
+      color: var(--muted-dark);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .process-card {
+      padding: 32px;
+      border: 1px solid #dfe2e5;
+      border-radius: 22px;
+      background: #fff;
+    }
+
+    .process-index {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 52px;
+      place-items: center;
+      border-radius: 14px;
+      background: #11151a;
+      color: var(--accent-light);
+      font-weight: 950;
+    }
+
+    .process-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .process-card p {
+      margin-bottom: 0;
+      color: var(--muted-dark);
+    }
+
+    /* Galleria */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      grid-template-rows: 260px 260px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--panel);
+    }
+
+    .gallery-item:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 450ms ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-label {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      left: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      background: rgba(9, 11, 14, 0.72);
+      color: #fff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+    }
+
+    .image-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      background: #060709;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      padding-block: 54px;
+    }
+
+    .footer-logo {
+      width: 260px;
+      margin-bottom: 16px;
+    }
+
+    footer p {
+      max-width: 560px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .footer-contact {
+      display: grid;
+      align-content: center;
+      justify-items: end;
+      gap: 8px;
+      text-align: right;
+    }
+
+    .footer-phone {
+      color: #fff;
+      font-size: 1.45rem;
+      font-weight: 950;
+    }
+
+    .copyright {
+      padding: 18px 0 28px;
+      border-top: 1px solid var(--line);
+      color: #767d85;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    /* Modulo */
+    .modal {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
     }
 
     .modal.open {
       display: flex;
     }
 
-    .modal-content {
-      position: relative;
-      width: 100%;
-      max-width: 620px;
-      max-height: 92vh;
-      overflow-y: auto;
-      padding: 35px;
-      border-radius: 22px;
-      background: white;
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(7px);
     }
 
-    .close {
+    .modal-panel {
+      position: relative;
+      z-index: 1;
+      width: min(660px, 100%);
+      max-height: calc(100vh - 44px);
+      padding: 36px;
+      overflow-y: auto;
+      border: 1px solid var(--line);
+      border-radius: 25px;
+      background: #11151a;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close {
       position: absolute;
-      top: 15px;
+      top: 18px;
       right: 18px;
+      display: grid;
       width: 42px;
       height: 42px;
-      border: none;
+      place-items: center;
       border-radius: 50%;
-      background: #eeeeea;
-      font-size: 25px;
+      background: #252b32;
+      color: #fff;
       cursor: pointer;
+      font-size: 1.5rem;
     }
 
-    .modal-content h2 {
-      margin-top: 5px;
+    .modal-panel h2 {
       margin-bottom: 8px;
-      font-size: 34px;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      letter-spacing: -0.045em;
     }
 
     .selected-service {
       margin-bottom: 25px;
-      color: #667068;
+      color: var(--muted);
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
     label {
-      display: block;
-      margin-bottom: 17px;
-      font-weight: bold;
+      display: grid;
+      gap: 7px;
+      font-size: 0.87rem;
+      font-weight: 850;
     }
 
     input,
     textarea {
       width: 100%;
-      margin-top: 7px;
-      padding: 13px;
-      border: 1px solid #d5d5cf;
-      border-radius: 10px;
+      border: 1px solid #303740;
+      border-radius: 12px;
+      background: #0b0e12;
+      color: #fff;
       outline: none;
+    }
+
+    input {
+      min-height: 50px;
+      padding: 0 14px;
+    }
+
+    textarea {
+      min-height: 145px;
+      padding: 13px 14px;
+      resize: vertical;
     }
 
     input:focus,
     textarea:focus {
-      border-color: #d98332;
-      box-shadow: 0 0 0 3px rgba(217, 131, 50, 0.15);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(242, 138, 34, 0.13);
     }
 
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .privacy {
+    .privacy-check {
       display: flex;
-      gap: 10px;
       align-items: flex-start;
-      color: #667068;
-      font-size: 14px;
-      font-weight: normal;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
     }
 
-    .privacy input {
-      width: auto;
-      margin-top: 3px;
+    .privacy-check input {
+      width: 18px;
+      min-height: 18px;
+      margin-top: 2px;
     }
 
-    .submit-button {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 11px;
-      background: #d98332;
-      color: white;
-      font-weight: bold;
+    .form-submit {
+      min-height: 54px;
+      border-radius: 13px;
+      background: var(--accent);
+      color: #111;
       cursor: pointer;
+      font-weight: 950;
     }
 
-    .note {
-      margin-top: 12px;
-      color: #737b75;
-      font-size: 13px;
+    .form-note {
+      color: #7f8790;
+      font-size: 0.76rem;
       text-align: center;
     }
 
-    @media (max-width: 850px) {
-      .cards {
+    /* Pulsante mobile fisso */
+    .mobile-call {
+      position: fixed;
+      z-index: 45;
+      right: 14px;
+      bottom: 14px;
+      left: 14px;
+      display: none;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 15px;
+      background: var(--accent);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.38);
+      color: #111;
+      font-weight: 950;
+    }
+
+    @media (max-width: 930px) {
+      .nav > a:not(.call-button) {
+        display: none;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .urgent-box {
+        grid-template-columns: 1fr;
+      }
+
+      .urgent-actions {
+        max-width: 400px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item:first-child {
+        grid-column: 1 / 3;
+        grid-row: auto;
       }
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 14px 18px;
+    @media (max-width: 650px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
       }
 
-      .logo {
-        font-size: 18px;
+      .topbar {
+        padding-inline: 12px;
+        font-size: 0.74rem;
       }
 
-      header button {
-        padding: 9px 12px;
-        font-size: 13px;
+      .header-inner {
+        min-height: 70px;
+      }
+
+      .brand-logo {
+        width: 176px;
+      }
+
+      .nav .call-button {
+        display: none;
+      }
+
+      .hero,
+      .hero-inner {
+        min-height: 650px;
       }
 
       .hero {
-        min-height: 480px;
-        padding: 60px 20px;
+        background-position: 62% center;
       }
 
-      .services {
-        padding: 60px 18px;
+      .hero-inner {
+        padding-block: 65px 95px;
       }
 
-      .cards {
+      .hero h1 {
+        font-size: clamp(2.7rem, 14vw, 4.3rem);
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .benefits {
+        margin-top: -34px;
+      }
+
+      .benefit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit {
+        padding: 20px;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .benefit:last-child {
+        border-bottom: 0;
+      }
+
+      .section {
+        padding-block: 78px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 30px;
+      }
+
+      .services-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: 370px;
+      }
+
+      .urgent-section {
+        padding-bottom: 78px;
+      }
+
+      .urgent-box {
+        padding: 34px 24px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 280px);
+      }
+
+      .gallery-item:first-child {
+        grid-column: auto;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-contact {
+        justify-items: start;
+        text-align: left;
+      }
+
+      .form-row {
         grid-template-columns: 1fr;
       }
 
@@ -332,10 +992,19 @@
         padding: 0;
       }
 
-      .modal-content {
-        max-height: 95vh;
-        padding: 30px 20px;
-        border-radius: 22px 22px 0 0;
+      .modal-panel {
+        width: 100%;
+        max-height: 94vh;
+        padding: 30px 20px 24px;
+        border-radius: 25px 25px 0 0;
+      }
+
+      .mobile-call {
+        display: flex;
+      }
+
+      footer {
+        padding-bottom: 70px;
       }
     }
   </style>
@@ -343,149 +1012,451 @@
 
 <body>
 
-  <header>
-    <div class="logo">Corsini Edilizia</div>
+  <div class="topbar">
+    Hai un'urgenza? Chiama direttamente
+    <a href="tel:+393669705509">366 970 5509</a>
+  </div>
 
-    <button onclick="apriModulo('Richiesta generica')">
-      Richiedi preventivo
-    </button>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" aria-label="Corsini Construction - Torna all'inizio">
+        <img
+          class="brand-logo"
+          src="data:image/webp;base64,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"
+          alt="Corsini Construction"
+        >
+      </a>
+
+      <nav class="nav" aria-label="Navigazione principale">
+        <a href="#servizi">Servizi</a>
+        <a href="#metodo">Come lavoriamo</a>
+        <a href="#lavori">Lavori</a>
+
+        <a class="call-button" href="tel:+393669705509">
+          <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79a15.56 15.56 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+          </svg>
+          Tecnico in giornata
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <small>Impresa edile</small>
+  <main>
 
-      <h1>Rinnoviamo la tua casa con cura e professionalità.</h1>
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Edilizia · manutenzioni · ristrutturazioni</span>
 
-      <p>
-        Ci occupiamo di imbiancature, impianti idraulici,
-        ristrutturazioni e posa di pavimenti.
-        Eseguiamo lavori piccoli, medi e grandi con preventivi personalizzati.
-      </p>
+          <h1>
+            Diamo nuova forma ai tuoi <span>spazi.</span>
+          </h1>
 
-      <button
-        class="hero-button"
-        onclick="document.getElementById('servizi').scrollIntoView()"
-      >
-        Guarda i servizi
-      </button>
-    </div>
-  </section>
+          <p class="hero-description">
+            Corsini Construction realizza imbiancature, impianti idraulici,
+            pavimenti e ristrutturazioni di ogni dimensione. Un unico referente,
+            lavori curati e comunicazione chiara dall'inizio alla consegna.
+          </p>
 
-  <section class="services" id="servizi">
+          <div class="hero-actions">
+            <button
+              class="button primary"
+              type="button"
+              data-open-form="Richiesta generica"
+            >
+              Richiedi un preventivo
+            </button>
 
-    <div class="section-title">
-      <small>I nostri servizi</small>
+            <a class="button secondary" href="tel:+393669705509">
+              <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79a15.56 15.56 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+              </svg>
+              Richiedi tecnico in giornata
+            </a>
+          </div>
 
-      <h2>Di quale lavoro hai bisogno?</h2>
-
-      <p>
-        Clicca sul servizio che ti interessa e compila la scheda.
-        La richiesta verrà inviata direttamente tramite WhatsApp.
-      </p>
-    </div>
-
-    <div class="cards">
-
-      <div class="card" onclick="apriModulo('Imbiancatura')">
-        <div class="card-icon">🎨</div>
-        <h3>Imbiancatura</h3>
-        <p>
-          Imbiancatura di pareti interne ed esterne,
-          ritocchi e rinnovo completo degli ambienti.
-        </p>
-        <strong>Richiedi informazioni →</strong>
+          <div class="hero-points">
+            <span class="hero-point">Preventivi personalizzati</span>
+            <span class="hero-point">Interventi piccoli e grandi</span>
+            <span class="hero-point">Contatto diretto</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card" onclick="apriModulo('Impianto idraulico')">
-        <div class="card-icon">🔧</div>
-        <h3>Impianto idraulico</h3>
-        <p>
-          Riparazioni, sostituzioni, nuovi impianti
-          e interventi su bagno e cucina.
-        </p>
-        <strong>Richiedi informazioni →</strong>
+    <section class="benefits">
+      <div class="container">
+        <div class="benefit-grid">
+          <div class="benefit">
+            <strong>Risposta rapida</strong>
+            <span>Contatto diretto tramite telefono o WhatsApp.</span>
+          </div>
+
+          <div class="benefit">
+            <strong>Un solo referente</strong>
+            <span>Seguiamo il lavoro dalla valutazione alla consegna.</span>
+          </div>
+
+          <div class="benefit">
+            <strong>Soluzioni su misura</strong>
+            <span>Interventi adattati agli spazi e alle necessità del cliente.</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card" onclick="apriModulo('Ristrutturazione piccola')">
-        <div class="card-icon">🧱</div>
-        <h3>Ristrutturazione piccola</h3>
-        <p>
-          Piccoli interventi, ripristini,
-          modifiche e lavori di manutenzione.
-        </p>
-        <strong>Richiedi informazioni →</strong>
+    <section class="section" id="servizi">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">I nostri servizi</span>
+            <h2>Un servizio completo per la tua casa.</h2>
+            <p>
+              Seleziona il lavoro che ti interessa. Si aprirà una scheda veloce
+              da compilare e inviare direttamente tramite WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+
+          <article
+            class="service-card"
+            tabindex="0"
+            role="button"
+            data-service="Imbiancatura"
+          >
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/7218009/pexels-photo-7218009.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Lavoro di imbiancatura con rullo"
+            >
+            <div class="service-content">
+              <span class="service-number">SERVIZIO 01</span>
+              <h3>Imbiancatura</h3>
+              <p>Pareti interne ed esterne, ritocchi e rinnovo completo degli ambienti.</p>
+              <span class="service-link">Richiedi informazioni →</span>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            tabindex="0"
+            role="button"
+            data-service="Impianto idraulico"
+          >
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Tecnico al lavoro su un impianto idraulico"
+            >
+            <div class="service-content">
+              <span class="service-number">SERVIZIO 02</span>
+              <h3>Impianto idraulico</h3>
+              <p>Riparazioni, sostituzioni e nuovi impianti per bagno e cucina.</p>
+              <span class="service-link">Richiedi informazioni →</span>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            tabindex="0"
+            role="button"
+            data-service="Ristrutturazione piccola"
+          >
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Interno di una casa durante una ristrutturazione"
+            >
+            <div class="service-content">
+              <span class="service-number">SERVIZIO 03</span>
+              <h3>Ristrutturazione piccola</h3>
+              <p>Ripristini, modifiche mirate e manutenzioni di singoli ambienti.</p>
+              <span class="service-link">Richiedi informazioni →</span>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            tabindex="0"
+            role="button"
+            data-service="Ristrutturazione media"
+          >
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/4567376/pexels-photo-4567376.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Casa in fase di ristrutturazione"
+            >
+            <div class="service-content">
+              <span class="service-number">SERVIZIO 04</span>
+              <h3>Ristrutturazione media</h3>
+              <p>Rinnovo di bagno, cucina o più ambienti con interventi coordinati.</p>
+              <span class="service-link">Richiedi informazioni →</span>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            tabindex="0"
+            role="button"
+            data-service="Ristrutturazione completa"
+          >
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/15798781/pexels-photo-15798781.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Ambiente durante una ristrutturazione completa"
+            >
+            <div class="service-content">
+              <span class="service-number">SERVIZIO 05</span>
+              <h3>Ristrutturazione completa</h3>
+              <p>Interventi completi per appartamenti, case, uffici e locali.</p>
+              <span class="service-link">Richiedi informazioni →</span>
+            </div>
+          </article>
+
+          <article
+            class="service-card"
+            tabindex="0"
+            role="button"
+            data-service="Pavimenti e rivestimenti"
+          >
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/4263067/pexels-photo-4263067.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Posa di un pavimento"
+            >
+            <div class="service-content">
+              <span class="service-number">SERVIZIO 06</span>
+              <h3>Pavimenti e rivestimenti</h3>
+              <p>Posa e sostituzione di pavimenti, piastrelle e rivestimenti.</p>
+              <span class="service-link">Richiedi informazioni →</span>
+            </div>
+          </article>
+
+        </div>
       </div>
+    </section>
 
-      <div class="card" onclick="apriModulo('Ristrutturazione media')">
-        <div class="card-icon">🏠</div>
-        <h3>Ristrutturazione media</h3>
-        <p>
-          Rinnovo di più ambienti,
-          rifacimento di bagno, cucina e altri spazi.
-        </p>
-        <strong>Richiedi informazioni →</strong>
+    <section class="urgent-section">
+      <div class="container">
+        <div class="urgent-box">
+          <div>
+            <span class="eyebrow">Contatto immediato</span>
+            <h2>Serve un tecnico in giornata?</h2>
+            <p>
+              Premi il pulsante e chiama direttamente Corsini Construction.
+              La disponibilità dell'intervento viene confermata telefonicamente.
+            </p>
+          </div>
+
+          <div class="urgent-actions">
+            <a class="urgent-call" href="tel:+393669705509">
+              <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.62 10.79a15.56 15.56 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+              </svg>
+              Chiama 366 970 5509
+            </a>
+            <small>Intervento in giornata secondo disponibilità.</small>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card" onclick="apriModulo('Ristrutturazione grande')">
-        <div class="card-icon">🏗️</div>
-        <h3>Ristrutturazione grande</h3>
-        <p>
-          Ristrutturazioni complete di appartamenti,
-          case, uffici e locali.
-        </p>
-        <strong>Richiedi informazioni →</strong>
+    <section class="section process-section" id="metodo">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Come lavoriamo</span>
+            <h2>Dal primo contatto al lavoro finito.</h2>
+            <p>
+              Un percorso semplice, chiaro e senza inutili complicazioni.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <span class="process-index">01</span>
+            <h3>Raccontaci il lavoro</h3>
+            <p>
+              Inviaci descrizione, misure indicative e fotografie tramite WhatsApp.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="process-index">02</span>
+            <h3>Valutazione e preventivo</h3>
+            <p>
+              Approfondiamo le necessità e definiamo la soluzione più adatta.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <span class="process-index">03</span>
+            <h3>Esecuzione e consegna</h3>
+            <p>
+              Organizziamo il lavoro e manteniamo il cliente aggiornato.
+            </p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="card" onclick="apriModulo('Pavimenti e rivestimenti')">
-        <div class="card-icon">◫</div>
-        <h3>Pavimenti</h3>
-        <p>
-          Posa e sostituzione di pavimenti,
-          piastrelle e rivestimenti.
+    <section class="section" id="lavori">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Ambiti di intervento</span>
+            <h2>Spazi che cambiano, lavori fatti con cura.</h2>
+            <p>
+              Dalla manutenzione mirata alla ristrutturazione completa.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/15798781/pexels-photo-15798781.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Interno durante lavori di ristrutturazione"
+            >
+            <figcaption class="gallery-label">Ristrutturazioni complete</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/7218009/pexels-photo-7218009.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Imbiancatura di una parete"
+            >
+            <figcaption class="gallery-label">Finiture e imbiancature</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <img
+              loading="lazy"
+              src="https://images.pexels.com/photos/4263067/pexels-photo-4263067.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt="Installazione di pavimento in legno"
+            >
+            <figcaption class="gallery-label">Pavimenti e rivestimenti</figcaption>
+          </figure>
+        </div>
+
+        <p class="image-note">
+          Le fotografie presenti nel sito sono immagini illustrative.
         </p>
-        <strong>Richiedi informazioni →</strong>
       </div>
+    </section>
 
-    </div>
-  </section>
+  </main>
 
   <footer>
-    <strong>Corsini Edilizia</strong>
-    <p>Lavori edili, manutenzioni e ristrutturazioni.</p>
+    <div class="container footer-inner">
+      <div>
+        <img
+          class="footer-logo"
+          src="data:image/webp;base64,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"
+          alt="Corsini Construction"
+        >
+        <p>
+          Lavori edili, manutenzioni, impianti e ristrutturazioni
+          per abitazioni e spazi professionali.
+        </p>
+      </div>
+
+      <div class="footer-contact">
+        <span>Contatto diretto</span>
+        <a class="footer-phone" href="tel:+393669705509">
+          366 970 5509
+        </a>
+        <button
+          class="button primary"
+          type="button"
+          data-open-form="Richiesta generica"
+        >
+          Richiedi preventivo
+        </button>
+      </div>
+    </div>
+
+    <div class="container copyright">
+      © <span id="current-year"></span> Corsini Construction. Tutti i diritti riservati.
+    </div>
   </footer>
 
-  <div class="modal" id="modulo">
+  <a class="mobile-call" href="tel:+393669705509">
+    <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.62 10.79a15.56 15.56 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+    </svg>
+    Richiedi tecnico in giornata
+  </a>
 
-    <div class="modal-content">
+  <div class="modal" id="request-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
 
-      <button class="close" onclick="chiudiModulo()">×</button>
+    <section
+      class="modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <button
+        class="modal-close"
+        type="button"
+        aria-label="Chiudi il modulo"
+        data-close-modal
+      >
+        ×
+      </button>
 
-      <h2>Richiedi un preventivo</h2>
+      <span class="eyebrow">Richiesta di contatto</span>
+      <h2 id="modal-title">Parlaci del lavoro.</h2>
 
       <p class="selected-service">
-        Servizio scelto:
-        <strong id="servizioScelto">Richiesta generica</strong>
+        Servizio selezionato:
+        <strong id="selected-service-label">Richiesta generica</strong>
       </p>
 
-      <form id="formPreventivo">
+      <form id="request-form">
+        <input
+          type="hidden"
+          id="selected-service"
+          value="Richiesta generica"
+        >
 
-        <label>
-          Nome
-          <input type="text" id="nome" required>
-        </label>
+        <div class="form-row">
+          <label>
+            Nome
+            <input
+              type="text"
+              id="first-name"
+              autocomplete="given-name"
+              required
+            >
+          </label>
 
-        <label>
-          Cognome
-          <input type="text" id="cognome" required>
-        </label>
+          <label>
+            Cognome
+            <input
+              type="text"
+              id="last-name"
+              autocomplete="family-name"
+              required
+            >
+          </label>
+        </div>
 
         <label>
           Numero di telefono
           <input
             type="tel"
-            id="telefono"
-            placeholder="Esempio: 3331234567"
+            id="customer-phone"
+            autocomplete="tel"
+            inputmode="tel"
+            placeholder="Esempio: 333 1234567"
             required
           >
         </label>
@@ -493,89 +1464,136 @@
         <label>
           Descrizione del lavoro
           <textarea
-            id="descrizione"
-            placeholder="Descrivi il lavoro, la zona, le dimensioni e ogni informazione utile."
+            id="job-description"
+            placeholder="Descrivi il lavoro, la zona, le dimensioni e ogni dettaglio utile."
             required
           ></textarea>
         </label>
 
-        <label class="privacy">
+        <label class="privacy-check">
           <input type="checkbox" required>
           <span>
-            Acconsento a essere ricontattato per questa richiesta.
+            Acconsento a essere ricontattato in merito a questa richiesta.
           </span>
         </label>
 
-        <button class="submit-button" type="submit">
+        <button class="form-submit" type="submit">
           Invia richiesta su WhatsApp
         </button>
 
-        <div class="note">
-          Verrai indirizzato su WhatsApp con il messaggio già compilato.
-        </div>
-
+        <small class="form-note">
+          Si aprirà WhatsApp con il messaggio già compilato.
+        </small>
       </form>
-    </div>
+    </section>
   </div>
 
   <script>
-    const numeroWhatsApp = "393669705509";
+    const BUSINESS_WHATSAPP = "393669705509";
 
-    let servizioSelezionato = "Richiesta generica";
+    const modal = document.getElementById("request-modal");
+    const form = document.getElementById("request-form");
+    const serviceInput = document.getElementById("selected-service");
+    const serviceLabel = document.getElementById("selected-service-label");
+    const firstNameInput = document.getElementById("first-name");
 
-    function apriModulo(servizio) {
-      servizioSelezionato = servizio;
+    let lastFocusedElement = null;
 
-      document.getElementById("servizioScelto").textContent = servizio;
+    function openModal(serviceName = "Richiesta generica") {
+      lastFocusedElement = document.activeElement;
+      serviceInput.value = serviceName;
+      serviceLabel.textContent = serviceName;
 
-      document.getElementById("modulo").classList.add("open");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
 
-      document.body.style.overflow = "hidden";
+      setTimeout(() => firstNameInput.focus(), 60);
     }
 
-    function chiudiModulo() {
-      document.getElementById("modulo").classList.remove("open");
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
 
-      document.body.style.overflow = "auto";
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
     }
 
-    document.getElementById("modulo").addEventListener("click", function(event) {
-      if (event.target === this) {
-        chiudiModulo();
+    document.querySelectorAll("[data-open-form]").forEach((button) => {
+      button.addEventListener("click", () => {
+        openModal(button.dataset.openForm || "Richiesta generica");
+      });
+    });
+
+    document.querySelectorAll("[data-service]").forEach((card) => {
+      card.addEventListener("click", () => {
+        openModal(card.dataset.service);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(card.dataset.service);
+        }
+      });
+    });
+
+    document.querySelectorAll("[data-close-modal]").forEach((element) => {
+      element.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("open")) {
+        closeModal();
       }
     });
 
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        chiudiModulo();
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
       }
+
+      const firstName =
+        document.getElementById("first-name").value.trim();
+
+      const lastName =
+        document.getElementById("last-name").value.trim();
+
+      const customerPhone =
+        document.getElementById("customer-phone").value.trim();
+
+      const jobDescription =
+        document.getElementById("job-description").value.trim();
+
+      const service = serviceInput.value;
+
+      const message = [
+        "Buongiorno Corsini Construction, vorrei richiedere informazioni.",
+        "",
+        "Servizio: " + service,
+        "Nome e cognome: " + firstName + " " + lastName,
+        "Telefono: " + customerPhone,
+        "",
+        "Descrizione del lavoro:",
+        jobDescription
+      ].join("\n");
+
+      const whatsappUrl =
+        "https://wa.me/" +
+        BUSINESS_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     });
 
-    document.getElementById("formPreventivo").addEventListener(
-      "submit",
-      function(event) {
-        event.preventDefault();
-
-        const nome = document.getElementById("nome").value.trim();
-        const cognome = document.getElementById("cognome").value.trim();
-        const telefono = document.getElementById("telefono").value.trim();
-        const descrizione = document.getElementById("descrizione").value.trim();
-
-        const messaggio =
-          "Buongiorno, vorrei richiedere informazioni per un lavoro.%0A%0A" +
-          "Servizio: " + encodeURIComponent(servizioSelezionato) + "%0A" +
-          "Nome: " + encodeURIComponent(nome) + "%0A" +
-          "Cognome: " + encodeURIComponent(cognome) + "%0A" +
-          "Telefono: " + encodeURIComponent(telefono) + "%0A%0A" +
-          "Descrizione del lavoro:%0A" +
-          encodeURIComponent(descrizione);
-
-        const indirizzo =
-          "https://wa.me/" + numeroWhatsApp + "?text=" + messaggio;
-
-        window.open(indirizzo, "_blank");
-      }
-    );
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
   </script>
 
 </body>
