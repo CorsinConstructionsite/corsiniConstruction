@@ -551,7 +551,7 @@
 
     .bathroom-promo-card {
       display: grid;
-      grid-template-columns: minmax(0, 1.06fr) minmax(330px, 0.94fr);
+      grid-template-columns: minmax(420px, 1fr) minmax(330px, 0.82fr);
       gap: 0;
       overflow: hidden;
       border: 1px solid rgba(242, 138, 34, 0.34);
@@ -580,9 +580,12 @@
 
     .bathroom-ad-link img {
       width: 100%;
-      height: 100%;
-      min-height: 620px;
-      object-fit: cover;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      object-position: center;
+      background: #050607;
       transition: transform 420ms ease;
     }
 
@@ -682,8 +685,10 @@
       }
 
       .bathroom-ad-link img {
-        min-height: auto;
+        min-height: 0;
+        height: auto;
         aspect-ratio: 1 / 1;
+        object-fit: contain;
       }
     }
 
@@ -847,6 +852,19 @@
       font-weight: 950;
     }
 
+    .footer-email,
+    .footer-work-link {
+      color: var(--accent-light);
+      font-size: 0.9rem;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-work-link:hover,
+    .footer-email:hover {
+      color: #fff;
+    }
+
     .copyright {
       padding: 18px 0 28px;
       border-top: 1px solid var(--line);
@@ -983,6 +1001,12 @@
       color: #111;
       cursor: pointer;
       font-weight: 950;
+    }
+
+    .response-time {
+      color: var(--accent-light);
+      font-size: 0.79rem;
+      font-weight: 850;
     }
 
     .form-note {
@@ -1193,6 +1217,7 @@
         <a href="#servizi">Servizi</a>
         <a href="#metodo">Come lavoriamo</a>
         <a href="#lavori">Lavori</a>
+        <a href="lavora-con-noi.html">Lavora o collabora con noi</a>
 
         <a class="call-button" href="tel:+393669705509">
           <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1237,7 +1262,7 @@
 
           <div class="hero-points">
             <span class="hero-point">Preventivi personalizzati</span>
-            <span class="hero-point">Interventi piccoli e grandi</span>
+            <span class="hero-point">Operiamo in Toscana e Liguria</span>
             <span class="hero-point">Contatto diretto</span>
           </div>
         </div>
@@ -1301,7 +1326,7 @@
             <ul class="bathroom-features">
               <li>Sopralluogo e preventivo gratuiti e senza impegno.</li>
               <li>Lavoro chiavi in mano con soluzioni su misura.</li>
-              <li>Tempi indicativi di circa due settimane.</li>
+              <li>Tempi indicativi: fino a 5 giorni lavorativi, salvo lavorazioni particolari.</li>
               <li>Interventi in tutta la provincia.</li>
             </ul>
 
@@ -1586,15 +1611,22 @@
           alt="Corsini Construction"
         >
         <p>
-          Lavori edili, manutenzioni, impianti e ristrutturazioni
-          per abitazioni e spazi professionali.
+          Specialisti nella ristrutturazione bagni, lavori edili,
+          manutenzioni e impianti per abitazioni e spazi professionali.
+          Operiamo in Toscana e Liguria.
         </p>
       </div>
 
       <div class="footer-contact">
-        <span>Contatto diretto</span>
+        <span>Operiamo in Toscana e Liguria</span>
         <a class="footer-phone" href="tel:+393669705509">
           366 970 5509
+        </a>
+        <a class="footer-email" href="mailto:corsiniconstrucion.info@gmail.com">
+          corsiniconstruction.info@gmail.com
+        </a>
+        <a class="footer-work-link" href="lavora-con-noi.html">
+          Lavora o collabora con noi →
         </a>
         <button
           class="button primary"
@@ -1607,7 +1639,7 @@
     </div>
 
     <div class="container copyright">
-      © <span id="current-year"></span> Corsini Construction. Tutti i diritti riservati.
+      © <span id="current-year"></span> Corsini Construction · P. IVA 01499780458 · Toscana e Liguria.
     </div>
   </footer>
 <div class="modal" id="request-modal" aria-hidden="true">
@@ -1633,7 +1665,7 @@
 
       <p class="selected-service">
         Servizio selezionato:
-        <strong id="selected-service-label">Richiesta generica</strong>
+        <strong id="selected-service-label">Richiesta generica</strong><br>
       </p>
 
       <form id="request-form">
@@ -1684,6 +1716,7 @@
             placeholder="Descrivi il lavoro, la zona, le dimensioni e ogni dettaglio utile."
             required
           ></textarea>
+          <span class="response-time">La ricontatteremo entro 24h.</span>
         </label>
 
         <label class="privacy-check">
