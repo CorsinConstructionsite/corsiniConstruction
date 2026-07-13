@@ -66,7 +66,8 @@
 
     button,
     input,
-    textarea {
+    textarea,
+    select {
       font: inherit;
     }
 
@@ -169,6 +170,21 @@
     }
 
     .nav > a:not(.call-button):hover {
+      color: #fff;
+    }
+
+    .nav-link-button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #d6dae0;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .nav-link-button:hover {
       color: #fff;
     }
 
@@ -865,6 +881,14 @@
       color: #fff;
     }
 
+    .footer-work-button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      text-align: right;
+    }
+
     .copyright {
       padding: 18px 0 28px;
       border-top: 1px solid var(--line);
@@ -953,7 +977,8 @@
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       border: 1px solid #303740;
       border-radius: 12px;
@@ -962,7 +987,8 @@
       outline: none;
     }
 
-    input {
+    input,
+    select {
       min-height: 50px;
       padding: 0 14px;
     }
@@ -974,7 +1000,8 @@
     }
 
     input:focus,
-    textarea:focus {
+    textarea:focus,
+    select:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 4px rgba(242, 138, 34, 0.13);
     }
@@ -1035,7 +1062,8 @@
     }
 
     @media (max-width: 930px) {
-      .nav > a:not(.call-button) {
+      .nav > a:not(.call-button),
+      .nav-link-button {
         display: none;
       }
 
@@ -1216,8 +1244,9 @@
         <a href="#bagni">Ristrutturazione bagni</a>
         <a href="#servizi">Servizi</a>
         <a href="#metodo">Come lavoriamo</a>
-        <a href="#lavori">Lavori</a>
-        <a href="lavora-con-noi.html">Lavora o collabora con noi</a>
+        <button class="nav-link-button" type="button" data-open-work-form>
+          Lavora o collabora con noi
+        </button>
 
         <a class="call-button" href="tel:+393669705509">
           <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -1552,55 +1581,7 @@
         </div>
       </div>
     </section>
-
-    <section class="section" id="lavori">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Ambiti di intervento</span>
-            <h2>Spazi che cambiano, lavori fatti con cura.</h2>
-            <p>
-              Dalla manutenzione mirata alla ristrutturazione completa.
-            </p>
-          </div>
-        </div>
-
-        <div class="gallery-grid">
-          <figure class="gallery-item">
-            <img
-              loading="lazy"
-              src="https://images.pexels.com/photos/15798781/pexels-photo-15798781.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="Interno durante lavori di ristrutturazione"
-            >
-            <figcaption class="gallery-label">Ristrutturazioni complete</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img
-              loading="lazy"
-              src="https://images.pexels.com/photos/7218009/pexels-photo-7218009.jpeg?auto=compress&cs=tinysrgb&w=900"
-              alt="Imbiancatura di una parete"
-            >
-            <figcaption class="gallery-label">Finiture e imbiancature</figcaption>
-          </figure>
-
-          <figure class="gallery-item">
-            <img
-              loading="lazy"
-              src="https://images.pexels.com/photos/4263067/pexels-photo-4263067.jpeg?auto=compress&cs=tinysrgb&w=900"
-              alt="Installazione di pavimento in legno"
-            >
-            <figcaption class="gallery-label">Pavimenti e rivestimenti</figcaption>
-          </figure>
-        </div>
-
-        <p class="image-note">
-          Le fotografie presenti nel sito sono immagini illustrative.
-        </p>
-      </div>
-    </section>
-
-  </main>
+</main>
 
   <footer>
     <div class="container footer-inner">
@@ -1623,11 +1604,15 @@
           366 970 5509
         </a>
         <a class="footer-email" href="mailto:corsiniconstrucion.info@gmail.com">
-          corsiniconstruction.info@gmail.com
+          corsiniconstrucion.info@gmail.com
         </a>
-        <a class="footer-work-link" href="lavora-con-noi.html">
+        <button
+          class="footer-work-link footer-work-button"
+          type="button"
+          data-open-work-form
+        >
           Lavora o collabora con noi →
-        </a>
+        </button>
         <button
           class="button primary"
           type="button"
@@ -1666,6 +1651,7 @@
       <p class="selected-service">
         Servizio selezionato:
         <strong id="selected-service-label">Richiesta generica</strong><br>
+        <span class="response-time">La ricontatteremo entro 24h.</span>
       </p>
 
       <form id="request-form">
@@ -1737,6 +1723,124 @@
     </section>
   </div>
 
+
+  <div class="modal" id="work-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-work-modal></div>
+
+    <section
+      class="modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="work-modal-title"
+    >
+      <button
+        class="modal-close"
+        type="button"
+        aria-label="Chiudi il modulo"
+        data-close-work-modal
+      >
+        ×
+      </button>
+
+      <span class="eyebrow">Corsini Construction</span>
+      <h2 id="work-modal-title">Lavora o collabora con noi.</h2>
+
+      <p class="selected-service">
+        Cerchiamo persone affidabili, artigiani, tecnici, imprese e
+        professionisti interessati a lavorare con noi in Toscana e Liguria.
+      </p>
+
+      <form id="work-form">
+        <div class="form-row">
+          <label>
+            Nome e cognome
+            <input
+              type="text"
+              id="work-name"
+              autocomplete="name"
+              required
+            >
+          </label>
+
+          <label>
+            Numero di telefono
+            <input
+              type="tel"
+              id="work-phone"
+              autocomplete="tel"
+              inputmode="tel"
+              required
+            >
+          </label>
+        </div>
+
+        <label>
+          Email
+          <input
+            type="email"
+            id="work-email"
+            autocomplete="email"
+            required
+          >
+        </label>
+
+        <label>
+          Tipo di richiesta
+          <select id="work-type" required>
+            <option value="">Seleziona una voce</option>
+            <option value="Candidatura per lavorare con voi">
+              Candidatura per lavorare con voi
+            </option>
+            <option value="Collaborazione come artigiano o impresa">
+              Collaborazione come artigiano o impresa
+            </option>
+            <option value="Collaborazione come tecnico o professionista">
+              Collaborazione come tecnico o professionista
+            </option>
+            <option value="Proposta di prodotti o forniture">
+              Proposta di prodotti o forniture
+            </option>
+          </select>
+        </label>
+
+        <label>
+          Zona in cui operi
+          <input
+            type="text"
+            id="work-area"
+            placeholder="Città, provincia o area"
+            required
+          >
+        </label>
+
+        <label>
+          Esperienza, attività e disponibilità
+          <textarea
+            id="work-description"
+            placeholder="Descrivi la tua esperienza, il lavoro che svolgi, le attrezzature disponibili e la tua disponibilità."
+            required
+          ></textarea>
+        </label>
+
+        <label class="privacy-check">
+          <input type="checkbox" required>
+          <span>
+            Acconsento a essere ricontattato per questa candidatura
+            o proposta di collaborazione.
+          </span>
+        </label>
+
+        <span class="response-time">
+          La richiesta verrà inviata direttamente tramite WhatsApp.
+        </span>
+
+        <button class="form-submit" type="submit">
+          Invia candidatura o proposta
+        </button>
+      </form>
+    </section>
+  </div>
+
   <script>
     const BUSINESS_WHATSAPP = "393669705509";
 
@@ -1745,6 +1849,10 @@
     const serviceInput = document.getElementById("selected-service");
     const serviceLabel = document.getElementById("selected-service-label");
     const firstNameInput = document.getElementById("first-name");
+
+    const workModal = document.getElementById("work-modal");
+    const workForm = document.getElementById("work-form");
+    const workNameInput = document.getElementById("work-name");
 
     let lastFocusedElement = null;
 
@@ -1763,6 +1871,26 @@
     function closeModal() {
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    function openWorkModal() {
+      lastFocusedElement = document.activeElement;
+
+      workModal.classList.add("open");
+      workModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+
+      setTimeout(() => workNameInput.focus(), 60);
+    }
+
+    function closeWorkModal() {
+      workModal.classList.remove("open");
+      workModal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
 
       if (lastFocusedElement) {
@@ -1793,9 +1921,21 @@
       element.addEventListener("click", closeModal);
     });
 
+    document.querySelectorAll("[data-open-work-form]").forEach((button) => {
+      button.addEventListener("click", openWorkModal);
+    });
+
+    document.querySelectorAll("[data-close-work-modal]").forEach((element) => {
+      element.addEventListener("click", closeWorkModal);
+    });
+
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && modal.classList.contains("open")) {
         closeModal();
+      }
+
+      if (event.key === "Escape" && workModal.classList.contains("open")) {
+        closeWorkModal();
       }
     });
 
@@ -1830,6 +1970,46 @@
         "",
         "Descrizione del lavoro:",
         jobDescription
+      ].join("\n");
+
+      const whatsappUrl =
+        "https://wa.me/" +
+        BUSINESS_WHATSAPP +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    });
+
+
+    workForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!workForm.checkValidity()) {
+        workForm.reportValidity();
+        return;
+      }
+
+      const name = document.getElementById("work-name").value.trim();
+      const phone = document.getElementById("work-phone").value.trim();
+      const email = document.getElementById("work-email").value.trim();
+      const type = document.getElementById("work-type").value;
+      const area = document.getElementById("work-area").value.trim();
+      const description =
+        document.getElementById("work-description").value.trim();
+
+      const message = [
+        "Buongiorno Corsini Construction,",
+        "vorrei inviare una candidatura o proposta di collaborazione.",
+        "",
+        "Nome e cognome: " + name,
+        "Telefono: " + phone,
+        "Email: " + email,
+        "Tipo di richiesta: " + type,
+        "Zona: " + area,
+        "",
+        "Esperienza / proposta:",
+        description
       ].join("\n");
 
       const whatsappUrl =
