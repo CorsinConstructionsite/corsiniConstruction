@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Prenota un sopralluogo gratuito con Corsini Construction per la ristrutturazione del tuo bagno.">
+  <title>Prenota sopralluogo gratuito | Corsini Construction</title>
+
+  <style>
+    :root{
+      --bg:#080808;
+      --panel:#111;
+      --panel2:#181818;
+      --text:#f7f7f7;
+      --muted:#b8b8b8;
+      --orange:#ff7900;
+      --orange2:#ff9a33;
+      --line:#303030;
+      --danger:#ff5d5d;
+      --shadow:0 24px 70px rgba(0,0,0,.48);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,121,0,.13), transparent 30%),
+        radial-gradient(circle at 90% 35%, rgba(255,121,0,.08), transparent 30%),
+        var(--bg);
+      line-height:1.5;
+    }
+
+    a{color:inherit}
+    .container{width:min(1180px,calc(100% - 32px));margin:auto}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(14px);
+      background:rgba(8,8,8,.88);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .header-inner{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      text-decoration:none;
+      line-height:.82;
+      letter-spacing:-2px;
+      font-weight:900;
+      font-size:36px;
+      color:#d7d7d7;
+      text-shadow:0 0 15px rgba(255,255,255,.28);
+    }
+    .brand small{
+      display:block;
+      margin-top:10px;
+      font-size:14px;
+      letter-spacing:4px;
+      text-align:center;
+      color:#fff;
+    }
+
+    .phone{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      text-decoration:none;
+      font-weight:900;
+      font-size:20px;
+    }
+    .phone i{
+      width:44px;height:44px;border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--orange);
+      color:#080808;
+      font-style:normal;
+      font-size:23px;
+    }
+    .phone span{display:block;color:var(--orange);font-size:11px;letter-spacing:1.2px;text-transform:uppercase}
+
+    main{padding:58px 0 70px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:42px;
+      align-items:start;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--orange2);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      font-weight:800;
+      font-size:13px;
+    }
+    .eyebrow:before{content:"";width:42px;height:3px;background:var(--orange)}
+
+    h1{
+      margin:20px 0 18px;
+      font-size:clamp(46px,7vw,82px);
+      line-height:.98;
+      letter-spacing:-3px;
+      text-transform:uppercase;
+    }
+    h1 em{display:block;color:var(--orange);font-style:normal}
+    .lead{font-size:21px;color:#d4d4d4;max-width:650px;margin:0 0 28px}
+
+    .benefits{display:grid;gap:14px;margin-top:30px}
+    .benefit{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.025);
+      border-radius:14px;
+    }
+    .benefit-icon{
+      flex:0 0 38px;
+      width:38px;height:38px;border-radius:50%;
+      display:grid;place-items:center;
+      border:2px solid var(--orange);
+      color:var(--orange);
+      font-weight:900;
+    }
+    .benefit strong{display:block;font-size:17px;margin-bottom:2px}
+    .benefit span{color:var(--muted);font-size:14px}
+
+    .tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .tags span{
+      border:1px solid #3a3a3a;
+      background:#141414;
+      color:#dedede;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,#161616,#0d0d0d);
+      border:1px solid #343434;
+      border-radius:24px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:5px;
+      background:linear-gradient(90deg,var(--orange),#ffb15d);
+    }
+    .badge{
+      display:inline-block;
+      background:rgba(255,121,0,.13);
+      color:var(--orange2);
+      border:1px solid rgba(255,121,0,.4);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    .card h2{font-size:32px;line-height:1.1;margin:16px 0 8px}
+    .card p{color:var(--muted);margin-top:0}
+
+    form{margin-top:22px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    label{display:block;margin-bottom:14px}
+    label>span{display:block;font-weight:800;font-size:13px;margin-bottom:7px;color:#e9e9e9}
+    input,select,textarea{
+      width:100%;
+      border:1px solid #383838;
+      background:#0c0c0c;
+      color:#fff;
+      border-radius:11px;
+      padding:13px 14px;
+      font:inherit;
+      outline:none;
+      transition:.2s;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,121,0,.14)}
+    textarea{resize:vertical;min-height:90px}
+    option{background:#111}
+
+    .consent{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:#cfcfcf;
+      font-size:13px;
+      margin-top:4px;
+    }
+    .consent input{width:18px;height:18px;margin-top:1px;accent-color:var(--orange)}
+    .consent span{margin:0;font-weight:400}
+
+    .error{display:none;color:var(--danger);font-size:12px;margin-top:6px}
+    .invalid .error{display:block}
+    .invalid input,.invalid select{border-color:var(--danger)}
+
+    button{
+      border:0;
+      width:100%;
+      margin-top:8px;
+      padding:16px 20px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--orange),#ff9b33);
+      color:#080808;
+      font-weight:900;
+      font-size:17px;
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(255,121,0,.22);
+    }
+    button:hover{transform:translateY(-1px);filter:brightness(1.04)}
+    .note{text-align:center;font-size:12px;color:#999;margin:12px 0 0!important}
+
+    .how{
+      margin-top:68px;
+      border-top:1px solid #232323;
+      padding-top:54px;
+    }
+    .how h2{text-align:center;font-size:38px;margin:0 0 30px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{padding:22px;border:1px solid #2b2b2b;border-radius:16px;background:#101010}
+    .step b{color:var(--orange);font-size:28px}
+    .step h3{margin:8px 0 5px;font-size:20px}
+    .step p{margin:0;color:var(--muted)}
+
+    .callbox{
+      margin-top:40px;
+      padding:28px;
+      border-radius:18px;
+      background:linear-gradient(110deg,#191919,#0d0d0d);
+      border:1px solid #363636;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .callbox span{color:var(--orange);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:1.1px}
+    .callbox h3{margin:4px 0 0;font-size:28px}
+    .callbox a{
+      text-decoration:none;
+      background:#fff;
+      color:#111;
+      font-weight:900;
+      padding:13px 18px;
+      border-radius:10px;
+      white-space:nowrap;
+    }
+
+    footer{border-top:1px solid #222;padding:28px 0 38px;color:#969696;text-align:center;font-size:13px}
+    footer a{color:#d0d0d0;text-decoration:none}
+
+    .toast{
+      position:fixed;
+      left:50%;bottom:24px;
+      transform:translate(-50%,20px);
+      opacity:0;
+      background:#fff;color:#111;
+      padding:12px 18px;
+      border-radius:999px;
+      font-weight:800;
+      transition:.25s;
+      pointer-events:none;
+      z-index:50;
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      h1{font-size:58px}
+      .steps{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .container{width:min(100% - 22px,1180px)}
+      .header-inner{min-height:72px}
+      .brand{font-size:25px}
+      .brand small{font-size:9px;letter-spacing:3px;margin-top:7px}
+      .phone{font-size:15px}
+      .phone i{width:38px;height:38px}
+      main{padding-top:38px}
+      h1{font-size:43px;letter-spacing:-2px}
+      .lead{font-size:18px}
+      .card{padding:22px 16px}
+      .row{grid-template-columns:1fr}
+      .callbox{align-items:flex-start;flex-direction:column}
+      .callbox a{width:100%;text-align:center}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="https://corsinconstructionsite.github.io/">
+      CORSINI
+      <small>CONSTRUCTION</small>
+    </a>
+    <a class="phone" href="tel:+393534047359">
+      <i>☎</i>
+      <div><span>Chiamaci ora</span>353 404 7359</div>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="container hero-grid">
+    <section>
+      <div class="eyebrow">Sopralluogo e preventivo gratuiti</div>
+      <h1>Prenota il tuo <em>sopralluogo gratuito</em></h1>
+      <p class="lead">Raccontaci come vuoi trasformare il tuo bagno. Ti ricontattiamo per fissare un appuntamento, senza impegno.</p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <div><strong>Risposta rapida</strong><span>Ti ricontattiamo per confermare giorno e orario.</span></div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">⌂</div>
+          <div><strong>Sopralluogo sul posto</strong><span>Valutiamo spazi, impianti e lavorazioni necessarie.</span></div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">€</div>
+          <div><strong>Preventivo senza impegno</strong><span>Ricevi una proposta chiara e personalizzata.</span></div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span>Ristrutturazione bagno</span>
+        <span>Impianto idraulico</span>
+        <span>Impianto elettrico</span>
+        <span>Doccia e sanitari</span>
+        <span>Rivestimenti</span>
+        <span>Illuminazione</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <span class="badge">Richiesta gratuita</span>
+      <h2>Scegli quando sentirci</h2>
+      <p>Compila i dati. Quando premi il pulsante si aprirà WhatsApp con il messaggio già pronto.</p>
+
+      <form id="bookingForm" novalidate>
+        <div class="row">
+          <label id="wrapName">
+            <span>Nome e cognome *</span>
+            <input id="name" type="text" autocomplete="name" placeholder="Mario Rossi">
+            <small class="error">Inserisci il tuo nome.</small>
+          </label>
+          <label id="wrapPhone">
+            <span>Telefono *</span>
+            <input id="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="333 123 4567">
+            <small class="error">Inserisci il tuo telefono.</small>
+          </label>
+        </div>
+
+        <label id="wrapArea">
+          <span>Comune o zona dell'intervento *</span>
+          <input id="area" type="text" autocomplete="address-level2" placeholder="Es. Aulla, Massa, La Spezia">
+          <small class="error">Indica il comune o la zona.</small>
+        </label>
+
+        <label>
+          <span>Tipo di intervento</span>
+          <select id="service">
+            <option>Ristrutturazione completa del bagno</option>
+            <option>Sostituzione doccia o vasca</option>
+            <option>Sanitari e mobile bagno</option>
+            <option>Rivestimenti e pavimenti</option>
+            <option>Impianto idraulico</option>
+            <option>Impianto elettrico e illuminazione</option>
+            <option>Altro intervento</option>
+          </select>
+        </label>
+
+        <div class="row">
+          <label id="wrapDate">
+            <span>Giorno preferito *</span>
+            <input id="date" type="date">
+            <small class="error">Scegli un giorno.</small>
+          </label>
+          <label>
+            <span>Fascia oraria</span>
+            <select id="time">
+              <option>Da concordare</option>
+              <option>Mattina, 08:00–12:00</option>
+              <option>Pomeriggio, 12:00–17:00</option>
+              <option>Sera, dopo le 17:00</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          <span>Note sull'intervento</span>
+          <textarea id="notes" placeholder="Descrivi brevemente il bagno e il lavoro che vorresti realizzare."></textarea>
+        </label>
+
+        <label class="consent" id="wrapConsent">
+          <input id="consent" type="checkbox">
+          <span>Acconsento a essere ricontattato da Corsini Construction per questa richiesta. *</span>
+        </label>
+        <small class="error" id="consentError">Devi accettare per inviare la richiesta.</small>
+
+        <button type="submit">Invia la richiesta su WhatsApp</button>
+        <p class="note">Nessun pagamento richiesto. L'appuntamento verrà confermato telefonicamente.</p>
+      </form>
+    </section>
+  </div>
+
+  <section class="container how">
+    <h2>Come funziona</h2>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>Invia la richiesta</h3><p>Compila il modulo con zona, intervento e disponibilità.</p></div>
+      <div class="step"><b>02</b><h3>Confermiamo l'appuntamento</h3><p>Ti contattiamo per definire giorno e fascia oraria.</p></div>
+      <div class="step"><b>03</b><h3>Ricevi il preventivo</h3><p>Dopo il sopralluogo prepariamo una proposta su misura.</p></div>
+    </div>
+
+    <div class="callbox">
+      <div><span>Preferisci parlare subito?</span><h3>Chiama Corsini Construction</h3></div>
+      <a href="tel:+393534047359">353 404 7359</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    Corsini Construction · Ristrutturazioni bagno chiavi in mano ·
+    <a href="https://corsinconstructionsite.github.io/">corsinconstructionsite.github.io</a>
+  </div>
+</footer>
+
+<div id="toast" class="toast">Apertura di WhatsApp…</div>
+
+<script>
+  const form = document.getElementById('bookingForm');
+  const dateInput = document.getElementById('date');
+  const toast = document.getElementById('toast');
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+  function setInvalid(wrapperId, invalid) {
+    document.getElementById(wrapperId).classList.toggle('invalid', invalid);
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const area = document.getElementById('area').value.trim();
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const notes = document.getElementById('notes').value.trim();
+    const consent = document.getElementById('consent').checked;
+
+    setInvalid('wrapName', !name);
+    setInvalid('wrapPhone', !phone);
+    setInvalid('wrapArea', !area);
+    setInvalid('wrapDate', !date);
+    document.getElementById('consentError').style.display = consent ? 'none' : 'block';
+
+    if (!name || !phone || !area || !date || !consent) {
+      const firstInvalid = document.querySelector('.invalid input, #consent:not(:checked)');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+
+    const formattedDate = new Date(date + 'T12:00:00').toLocaleDateString('it-IT', {
+      day: '2-digit', month: '2-digit', year: 'numeric'
+    });
+
+    const message = [
+      'Buongiorno Corsini Construction, vorrei prenotare un sopralluogo gratuito.',
+      '',
+      `Nome: ${name}`,
+      `Telefono: ${phone}`,
+      `Zona: ${area}`,
+      `Intervento: ${service}`,
+      `Giorno preferito: ${formattedDate}`,
+      `Fascia oraria: ${time}`,
+      notes ? `Note: ${notes}` : ''
+    ].filter(Boolean).join('\n');
+
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1600);
+
+    const whatsappUrl = 'https://wa.me/393534047359?text=' + encodeURIComponent(message);
+    window.open(whatsappUrl, '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>
