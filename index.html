@@ -1712,6 +1712,17 @@
         </label>
 
         <label>
+          Città e provincia
+          <input
+            type="text"
+            id="customer-location"
+            autocomplete="address-level2"
+            placeholder="Esempio: Massa (MS)"
+            required
+          >
+        </label>
+
+        <label>
           Descrizione del lavoro
           <textarea
             id="job-description"
@@ -1972,6 +1983,9 @@
       const customerPhone =
         document.getElementById("customer-phone").value.trim();
 
+      const customerLocation =
+        document.getElementById("customer-location").value.trim();
+
       const jobDescription =
         document.getElementById("job-description").value.trim();
 
@@ -1983,6 +1997,7 @@
         "Servizio: " + service,
         "Nome e cognome: " + firstName + " " + lastName,
         "Telefono: " + customerPhone,
+        "Città e provincia: " + customerLocation,
         "",
         "Descrizione del lavoro:",
         jobDescription
